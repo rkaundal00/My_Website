@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Activity, Heart, Brain, Cloud } from "lucide-react";
+import Image from "next/image";
+import { type ReactNode } from "react";
 
 interface Project {
   title: string;
@@ -9,38 +11,65 @@ interface Project {
   tech: string[];
   repo?: string;
   demo?: string;
+  image: ReactNode;
 }
 
 const projects: Project[] = [
   {
-    title: "AI-Powered Code Reviewer",
+    title: "Batch Application in Cloud",
     description:
-      "An automated code review tool that uses large language models to analyze pull requests, detect potential bugs, and suggest improvements in real time.",
-    tech: ["Python", "FastAPI", "OpenAI API", "React", "Docker"],
-    repo: "https://github.com/rahulkaundal/code-reviewer",
-    demo: "https://code-reviewer.demo.com",
+      "Built an automated resource management system using Kubernetes, gCloud, Python, Docker, and Bash that dynamically schedules and allocates resources between latency-sensitive and batch workloads, ensuring SLO compliance while maximizing throughput and system stability.",
+    tech: ["Python", "Bash", "Kubernetes", "Docker", "gCloud"],
+    repo: "https://github.com/Bruol/cloud-computing-architecture-project",
+    image: (
+      // <div className="relative h-40 w-full">
+      //   <Image
+      //     src="/cloud_illustration.png"
+      //     alt="Cloud computing illustration"
+      //     fill
+      //     className="object-cover"
+      //   />
+      // </div>
+      <div className="flex h-40 items-center justify-center rounded-t-xl bg-red-100 dark:bg-red-950">
+        <Cloud className="h-12 w-12 text-red-500 dark:text-red-400" />
+      </div>
+    ),
   },
   {
-    title: "Distributed Task Scheduler",
+    title: "ICU Mortality Prediction",
     description:
-      "A fault-tolerant distributed task scheduling system built for high-throughput job processing with real-time monitoring and automatic retries.",
-    tech: ["Go", "gRPC", "Redis", "PostgreSQL", "Kubernetes"],
-    repo: "https://github.com/rahulkaundal/task-scheduler",
+      "Built and evaluated deep learning models (LSTM, BiLSTM, Transformer) on pre-processed ICU time-series data from PhysioNet for mortality prediction, using representation learning and visualization techniques (t-SNE, UMAP) for clinical interpretability.",
+    tech: ["Pytorch", "Scikit-learn", "Matplotlib", "Pandas"],
+    repo: "https://github.com/Thosam1/PhysioNet-ICU-Mortality-Prediction",
+    image: (
+      <div className="flex h-40 items-center justify-center rounded-t-xl bg-red-100 dark:bg-red-950">
+        <Activity className="h-12 w-12 text-red-500 dark:text-red-400" />
+      </div>
+    ),
   },
   {
-    title: "Real-Time Collaboration Editor",
+    title: "Heart Disease Prediction ",
     description:
-      "A collaborative text editor supporting real-time multi-user editing with conflict resolution using CRDTs and operational transforms.",
-    tech: ["TypeScript", "Next.js", "WebSockets", "Yjs", "Tailwind CSS"],
-    repo: "https://github.com/rahulkaundal/collab-editor",
-    demo: "https://collab-editor.demo.com",
+      "Built and compared machine learning models (Logistic Regression, Random Forest, XGBoost, Neural Networks) on processed clinical data to predict heart disease risk, using SHAP values and evaluation metrics to improve accuracy and interpretability.",
+    tech: ["Pytorch", "Scikit-learn", "Matplotlib", "SHAP"],
+    repo: "https://github.com/afonsofsdomingues/heart-and-chest-xai",
+    image: (
+      <div className="flex h-40 items-center justify-center rounded-t-xl bg-pink-100 dark:bg-pink-950">
+        <Heart className="h-12 w-12 text-pink-500 dark:text-pink-400" />
+      </div>
+    ),
   },
   {
-    title: "ML Pipeline Framework",
+    title: "LLM Ensembles for Robust Sentiment Classification",
     description:
-      "A lightweight framework for building reproducible machine learning pipelines with experiment tracking, data versioning, and model registry.",
-    tech: ["Python", "PyTorch", "MLflow", "DVC", "AWS S3"],
-    repo: "https://github.com/rahulkaundal/ml-pipeline",
+      "Fine-tuned transformer-based LLMs (BERT, RoBERTa, DeBERTa v3, XLM-R) on a balanced 100K+ sentence dataset for ternary sentiment classification, using ensemble methods like softmax averaging and majority voting to boost robustness and performance.",
+    tech: ["Pytorch", "Hugging Face", "Auto-sklearn", "Scikit-learn"],
+    repo: "https://github.com/Thosam1/SentimentClassification",
+    image: (
+      <div className="flex h-40 items-center justify-center rounded-t-xl bg-purple-100 dark:bg-purple-950">
+        <Brain className="h-12 w-12 text-purple-500 dark:text-purple-400" />
+      </div>
+    ),
   },
 ];
 
@@ -64,8 +93,10 @@ export function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group rounded-xl border border-neutral-200 p-6 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
+              className="group overflow-hidden rounded-xl border border-neutral-200 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
             >
+              {project.image}
+              <div className="p-6">
               <h3 className="mb-2 text-lg font-semibold">{project.title}</h3>
               <p className="mb-4 text-sm text-neutral-600 leading-relaxed dark:text-neutral-400">
                 {project.description}
@@ -105,6 +136,7 @@ export function Projects() {
                     Demo
                   </a>
                 )}
+              </div>
               </div>
             </motion.article>
           ))}

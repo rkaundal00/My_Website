@@ -26,15 +26,6 @@ export function Hero() {
   return (
     <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-6">
       <div className="max-w-2xl text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-4 text-sm font-medium tracking-widest text-neutral-500 uppercase dark:text-neutral-400"
-        >
-          Welcome to my portfolio
-        </motion.p>
-
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +41,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-4 text-lg text-neutral-600 dark:text-neutral-400"
         >
-          CS Master&apos;s Student at ETH Zurich
+          Computer Science Master&apos;s Student at ETH Zurich
         </motion.p>
 
         <motion.p
@@ -59,8 +50,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-8 text-neutral-500 dark:text-neutral-500"
         >
-          Focused on Software Engineering with a passion for AI and building
-          tools that make a difference.
+          Passionate tech enthusiast that loves to build (and somethimes break) cool software.
         </motion.p>
 
         <motion.div
